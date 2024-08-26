@@ -70,7 +70,9 @@ export default defineComponent({
       this.isLoading = true;
       this.formData = formData;
       const videoRes = await generateVideo(this.storyboard!);
+      console.log("🚀 ~ generateVideo ~ videoRes:", videoRes)
       const isReady = await checkVideoStatus(videoRes.data.check_status_url);
+      console.log("🚀 ~ generateVideo ~ isReady:", isReady)
       if (isReady) {
         this.url = videoRes.data.output.video[0].links.url;
       }
