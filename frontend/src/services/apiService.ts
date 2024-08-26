@@ -3,7 +3,7 @@ import { IStoryBoard } from '../interfaces/Idomoo'
 import { IVideoResponse } from '@/interfaces/Video';
 
 const apiClient = axios.create({
-  baseURL:  `https://idomoo.onrender.com` ,
+  baseURL:  'http://localhost:3000',
   headers: {
     'Content-Type': 'application/json'
   }
@@ -26,8 +26,8 @@ export const generateLandingPage = (pageData: { lastName: string, firstName: str
 }
 
 export const checkVideoStatus = async (url: string): Promise<boolean> => {
-  const maxRetries = 50
-  const retryTimeout = 3000
+  const maxRetries = 20
+  const retryTimeout = 1000
 
   for (let retries = 0; retries < maxRetries; retries++) {
     try {

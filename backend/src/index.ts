@@ -8,9 +8,9 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, '../public')));
 
-// app.use(cors({
-//     origin: 'http://localhost:8080',
-// }));
+app.use(cors({
+    origin: 'http://localhost:8080',
+}));
 app.use(express.json());
 
 app.get('/storyboards/:storyboardId', idomooController.getStoryboard);
@@ -22,8 +22,6 @@ app.get('/keep-alive', (req,res)=> res.send(200));
 
 
 app.get('*', (req, res) => {
-    console.log("🚀 ~ app.get ~ __dirname:", __dirname)
-    console.log("🚀 ~ app.get ~ (path.join(__dirname, './public/index.html':", path.join(__dirname, '../public/index.html'))
     res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 

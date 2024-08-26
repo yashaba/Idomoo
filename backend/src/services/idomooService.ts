@@ -8,7 +8,6 @@ class IdomooService {
   async fetchStoryboard(storyboardId: string) {
     try {
       const token = await getToken();
-      console.log("🚀 ~ IdomooService ~ fetchStoryboard ~ token:", token)
       const response = await axios.get(`${config.apiBaseUrl}/storyboards/${storyboardId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
