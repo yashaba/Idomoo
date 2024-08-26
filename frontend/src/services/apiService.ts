@@ -3,7 +3,7 @@ import { IStoryBoard } from '../interfaces/Idomoo'
 import { IVideoResponse } from '@/interfaces/Video';
 
 const apiClient = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL:  `http://localhost:${process.env.PORT || 3000}` ,
   headers: {
     'Content-Type': 'application/json'
   }

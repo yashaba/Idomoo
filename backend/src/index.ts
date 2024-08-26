@@ -17,6 +17,10 @@ app.get('/storyboards/:storyboardId', idomooController.getStoryboard);
 app.post('/storyboards/generate-video', idomooController.generateVideo);
 app.post('/generate-landing-page', htmlController.generateLandingPage);
 
+//This is for an outside CronJob to keep the production from shutting down
+app.get('/keep-alive', (req,res)=> res.send(200));
+
+
 app.get('*', (req, res) => {
     console.log("🚀 ~ app.get ~ __dirname:", __dirname)
     console.log("🚀 ~ app.get ~ (path.join(__dirname, './public/index.html':", path.join(__dirname, '../public/index.html'))
