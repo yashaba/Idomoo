@@ -4,6 +4,7 @@ import { config } from '../config';
 let token = '';
 let tokenExpiresAt = 0;
 
+console.log("🚀 ~ config:", config)
 export const getToken = async (): Promise<string> => {
   const now = Math.floor(Date.now() / 1000); 
 
