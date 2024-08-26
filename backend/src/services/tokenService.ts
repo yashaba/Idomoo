@@ -19,8 +19,8 @@ export const getToken = async (): Promise<string> => {
       token = response.data.access_token;
       tokenExpiresAt = now + response.data.expires_in; 
       console.log('New token acquired:', token);
-    } catch (error) {
-      console.error('Failed to acquire token:', error);
+    } catch (error :any) {
+      console.error('Failed to acquire token:', error.data.errors);
       throw error;
     }
   }
