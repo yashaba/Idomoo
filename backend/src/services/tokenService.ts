@@ -21,7 +21,9 @@ export const getToken = async (): Promise<string> => {
       console.log('New token acquired:', token);
     } catch (error :any) {
       console.log("🚀 ~ getToken ~ error:", error)
-      console.error('Failed to acquire token:', error.data.errors);
+      console.error('Failed to acquire token:', JSON.stringify(error));
+
+      console.error('Failed to acquire token:', error.response.data.errors);
       throw error;
     }
   }
