@@ -26,8 +26,8 @@ export const generateLandingPage = (pageData: { lastName: string, firstName: str
 }
 
 export const checkVideoStatus = async (url: string): Promise<boolean> => {
-  const maxRetries = 20
-  const retryTimeout = 1000
+  const maxRetries = 50
+  const retryTimeout = 3000
 
   for (let retries = 0; retries < maxRetries; retries++) {
     try {
