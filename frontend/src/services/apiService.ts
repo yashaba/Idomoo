@@ -20,7 +20,7 @@ export const generateVideo = (storyBoard: Partial<IStoryBoard>): Promise<{ data:
 };
 
 export const generateLandingPage = (pageData: { lastName: string, firstName: string, url: string }) => {
-  return apiClient.post('http://localhost:3000/generate-landing-page', pageData, {
+  return apiClient.post('/generate-landing-page', pageData, {
     responseType: 'blob'
   })
 }
