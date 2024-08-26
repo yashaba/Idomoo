@@ -1,14 +1,27 @@
 <template>
   <div class="form-container styled-container">
     <form @submit.prevent="submitForm" class="styled-form">
-      <input type="text" placeholder="First Name" v-model="form.firstName" class="styled-input" />
-      <input type="text" placeholder="Last Name" v-model="form.lastName" class="styled-input" />
+      <h2>Enter the details below in order to generate your video</h2>
+      <div class="flex">
+        <FloatLabel>
+          <InputText id="firstName" v-model="form.firstName" />
+          <label for="firstName">First Name</label>
+        </FloatLabel>
+        <FloatLabel>
+          <InputText id="lastName" v-model="form.lastName" />
+          <label for="lastName">Last Name</label>
+        </FloatLabel>
+      </div>
+      <!-- <input type="text" placeholder="First Name" v-model="form.firstName" class="styled-input" /> -->
+      <!-- <input type="text" placeholder="Last Name" v-model="form.lastName" class="styled-input" /> -->
       <div v-for="(item, index) in storyboard.data" :key="index">
         <div v-if="item.key.includes('Media')" class="form-group">
           <label :for="`data-${index}`" class="styled-label">{{ item.key }}:</label>
-          <ColorPicker v-model="item.val" format="rgb"></ColorPicker>
-          <FileUpload ref="fileupload" mode="basic" name="demo[]" accept="image/*" auto="false" :maxFileSize="1000000"
-            @select="onUpload($event, index)" />
+          <div class="media-container">
+            <ColorPicker v-model="item.val" format="rgb"></ColorPicker>
+            <FileUpload ref="fileupload" mode="basic" name="demo[]" accept="image/*" auto="false" :maxFileSize="1000000"
+              @select="onUpload($event, index)" />
+          </div>
         </div>
         <div v-else class="form-group">
           <label :for="`data-${index}`" class="styled-label">{{ item.key }}:</label>
@@ -30,11 +43,13 @@ import ColorPicker from 'primevue/colorpicker';
 import FileUpload from 'primevue/fileupload';
 import Toast from 'primevue/toast';
 import { fileUploadService } from '../services/fileUploadService'
+import InputText from 'primevue/inputtext';
+import FloatLabel from 'primevue/floatlabel';
 
 
 export default defineComponent({
   name: 'IdomooForm',
-  components: { ColorPicker, FileUpload, Toast },
+  components: { ColorPicker, FileUpload, Toast, InputText, FloatLabel},
   props: {
     storyboard: Object,
     isLoading: Boolean
@@ -57,7 +72,7 @@ export default defineComponent({
   },
 
   methods: {
-    convertRgbToString(rgb: {r:string,g:string,b:string}) {
+    convertRgbToString(rgb: { r: string, g: string, b: string }) {
       return `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
     },
     async onUpload(event: any, index: number) {
@@ -92,26 +107,38 @@ export default defineComponent({
 .styled-form {
   display: flex;
   flex-direction: column;
+  max-width: 500px;
+  gap:20px;
 }
 
 .styled-input,
 .styled-color-input,
 .styled-file-input {
   background-color: #fff;
-  border: 2px solid #ddd;
+  border: 1px solid #ddd;
   border-radius: 5px;
-  padding: 10px;
+  padding: 7px;
   margin-bottom: 15px;
   font-size: 1em;
+  width: 90%
 }
 
 .styled-label {
-  font-weight: bold;
+  // font-weight: bold;
   margin-bottom: 5px;
   display: block;
+
+  font-size: 13px;
+  color: rgb(100, 100, 100);
+  margin-left: 11px;
 }
 
 .form-group {
-  margin-bottom: 15px;
+  // margin-bottom: 15px;
+}
+
+.media-container {
+  display: flex;
+  justify-content: space-around;
 }
 </style>

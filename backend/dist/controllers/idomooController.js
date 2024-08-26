@@ -26,7 +26,6 @@ class IdomooController {
     generateVideo(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                // console.log("🚀 ~ IdomooController ~ generateVideo ~ req.body:", req.body)
                 const data = yield idomooService_1.idomooService.generateVideo(req.body);
                 res.json(data);
             }

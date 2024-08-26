@@ -63,12 +63,10 @@ class IdomooService {
                         Accept: 'application/json',
                     },
                 });
-                console.log('Video generated:', response.data);
                 return response.data;
             }
             catch (error) {
                 console.error('Error generating video:', error.response.data);
-                //   console.error('Error generating video:', error);
                 throw error;
             }
         });

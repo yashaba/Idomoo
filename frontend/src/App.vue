@@ -8,6 +8,8 @@
       </div>
       <div>
         <div class="storyboard-info">
+          <IdomooForm @formPosted="generateVideo" :isLoading="isLoading" :storyboard="storyboard"></IdomooForm>
+
           <div class="styled-container">
             <div v-if="!url" class="preview">
               <h2>Preview</h2>
@@ -24,7 +26,6 @@
               </div>
             </div>
           </div>
-          <IdomooForm @formPosted="generateVideo" :isLoading="isLoading" :storyboard="storyboard"></IdomooForm>
         </div>
       </div>
     </div>
@@ -113,7 +114,7 @@ export default defineComponent({
 
   .title {
     h1 {
-      text-align: center;
+      // text-align: center;
     }
   }
 

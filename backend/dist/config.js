@@ -11,5 +11,4 @@ exports.config = {
     secretApiKey: process.env.SECRET_API_KEY || '',
     tokenUrl: 'https://usa-api.idomoo.com/api/v3/oauth/token',
     apiBaseUrl: 'https://usa-api.idomoo.com/api/v3',
-    maxVideoRetries: 20
 };

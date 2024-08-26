@@ -17,7 +17,6 @@ class HtmlController {
             try {
                 const data = req.body;
                 const htmlContent = htmlService_1.htmlService.getLandingPage(data);
-                console.log("🚀 ~ HtmlController ~ generateLandingPage ~ htmlContent:", htmlContent);
                 res.setHeader('Content-Type', 'text/html');
                 res.send(htmlContent);
             }

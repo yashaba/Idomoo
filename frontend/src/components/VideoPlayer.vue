@@ -29,6 +29,5 @@ export default defineComponent({
 <style scoped lang="scss">
 #idm-player {
   width: 100%;
-  height: 100%;
 }
 </style>
